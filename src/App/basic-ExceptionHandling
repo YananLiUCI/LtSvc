@@ -1,0 +1,20 @@
+
+Generally, checked exceptions denote error scenarios which are outside the immediate control of the program.
+They occur usually interacting with outside resources/network resources e.g. database problems, network connection errors, missing files etc.
+Example of checked exceptions are : ClassNotFoundException, IOException, SQLException and so on.
+ UncheckedExceptions, the occurrences of which are not checked by the compiler. They will come into life/occur into your program, once any buggy code is executed.
+Remember the biggest difference between checked and unchecked exceptions is that checked exceptions are forced by compiler and used to indicate exceptional conditions that are out of the control of the program (for example, I/O errors),
+while unchecked exceptions are occurred during runtime and used to indicate programming errors (for example, a null pointer).
+
+Best practice to handle exception
+
+Checked exceptions can be used when a method cannot do what its name says it does. e.g. A method named prepareSystem() which pre-populate configuration files and do some configuration using them, can declare throwing FileNotFoundException which implies that method uses configuration files from file system.
+Checked exceptions ideally should never be used for programming errors, but absolutely should be used for resource errors and for flow control in such cases.
+Throw only those exceptions which a method can not handle by any mean. Method should first try to handle it as soon as it encounters. Throw the exception only if it is not possible to handle inside method.
+A good way to define method signatures is to declare exceptions close to method name. If your method is named openFile, then it is expected to throw FileNotFoundException?. If your method is named findProvider, then it is expected to throw NoSuchProviderException.
+Also, these type of exceptions should be made checked exceptions as it forces the caller to deal with the problems that are inherent to the semantic of your methods.
+
+Rule is if a client can reasonably be expected to recover from an exception, make it a checked exception. If a client cannot do anything to recover from the exception, make it an unchecked exception.
+In reality, most applications will have to recover from pretty much all exceptions including NullPointerException, IllegalArgumentExceptions and many other unchecked exceptions. The action / transaction that failed will be aborted but the application has to stay alive and be ready to serve the next action / transaction.
+
+The only time it is normally legal to shut down an application is during startup. For example, if a configuration file is missing and the application cannot do anything sensible without it, then it is legal to shut down the application.

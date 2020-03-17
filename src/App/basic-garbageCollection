@@ -1,0 +1,9 @@
+Java garbage collection is the process by which Java programs perform automatic memory management. Java programs compile to bytecode that can be run on a Java Virtual Machine, or JVM for short.
+When Java programs run on the JVM, objects are created on the heap. As long as an object is being referenced, the JVM considers it alive.
+Once an object is no longer referenced and therefore is not reachable by the application code, the garbage collector removes it and reclaims the unused memory.
+Which algorithm is used for garbage collection in Java?
+The GC in the old generation uses an algorithm called "mark-sweep-compact." The first step of this algorithm is to mark the surviving objects in the old generation.
+Then, it checks the heap from the front and leaves only the surviving ones behind (sweep)
+It will automatically run can use follow method to
+Using System.gc() method : System class contain static method gc() for requesting JVM to run Garbage Collector.
+Using Runtime.getRuntime().gc() method : Runtime class allows the application to interface with the JVM in which the application is running.

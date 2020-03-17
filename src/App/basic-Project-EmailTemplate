@@ -1,0 +1,6 @@
+Since last year, Ebay provided buyer the option to purchase international shipping service. Our end user encountered very high failure rate, ~ 20%,  purchasing the shipping service.
+Failure can due to payment not accepted by shipping department, country regulation. etc. Buyers are likely give up after few times retry, this is harmful for our business.
+
+To improve user experience, I took the lead developed a failure detection mechanism. Whenever user encountered a shipping payment failure, email will send out guiding buyer to make the payment successfully.
+This helped user able to figure out the best approach to make successful postage payment immediately they received the email. Previously 43% user retried after first time postage payment failed.
+The number increased to 85 % after the launch of this service.

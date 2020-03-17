@@ -1,0 +1,9 @@
+b. Scheduler
+Apache Mesos: When a job comes into execution, the job request comes into Mesos master and Mesos determines the resources that are available and sends the request to the framework. This allows the framework to determine what is the best fit for a job that’s needed to be run. Thus, it is non-monolithic scheduler (it is two way process entity, that makes scheduling decision and deploy job to the scheduler).
+
+Hadoop YARN: When job request comes into the Yarn resource manager, it evaluates all the resources available and places the job accordingly. Thus it is a monolithic scheduler (Monolithic schedulers are a single process entity, that make scheduling decisions and deploy jobs to be scheduled.
+
+c. Scheduling
+Apache Mesos:  In Mesos, it is a memory and CPU scheduling, i.e. push based scheduling.
+
+Hadoop YARN: In YARN, it is mainly memory scheduling, i.e. pull based scheduling.

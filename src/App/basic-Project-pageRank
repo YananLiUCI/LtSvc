@@ -1,0 +1,24 @@
+PageRank is an algorithm used by Google Search to rank websites in their search engine results.
+
+old rank method:
+Use Title/ Use keyword density /Manually
+
+disadvantage
+
+Not accurate/Easily manipulated by human
+
+Page Rank theory:
+
+1.number assumption : More important websites are likely to receive more links from other websites
+
+2.weighting assumtion:Website with higher PageRank will pass higher weight
+
+We have an initail page rank0 matrix to represent the weight for each website and a transition matrix to represent the relation ship between website.
+
+page rank 1 matrix can be calculated by page rank 0 multiply the transition matrix.
+
+page rank n = page rank (n - 1) * transition matrix.
+
+We can use 2 map reduce job to calculate the transition matrix and do matrix multiplication. 2 map reduce to calculate the sum of the matrix multiplication.
+
+The page rank n will converge and we got the website page ranking.

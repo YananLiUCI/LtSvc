@@ -1,0 +1,18 @@
+Rest service scalable
+The server end of REST is stateless, which means that the server doesn't have to store anything across requests.
+ This means that there doesn't have to be (much) communication between servers, making it horizontally scalable.
+
+Of course, there's a small bonus in the R (representational) in that a load balancer can easily route the request to the right server if you have nice URLs, and GET could go to a slave while POSTs go to masters.
+
+
+restful api post large data
+ could split up the data file into small chunks.
+ For each chunk send a separate HTTP POST request, specifying the bytes of the original file it represents, in the Range header.
+ When the server receives all chunks (it knows the total size of the uploaded file because you sent a delimiter),
+ it knows the file upload is complete and can concatenate it server side, perhaps use a checksum (or ETag, as is often done) so you can verify the file.
+后来对方提出比如data source是db或大文件应该怎么处理 回答自然是data steaming i/o 不能读入memory
+Design pattern:
+
+问了network protocols, http/https有什么区别,based on什么protocols？
+答:一个不加密 一个加密(encrypted) 都是based on tcp/ip.
+http uses port 80 by default; https  use port 443 by default.

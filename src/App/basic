@@ -1,0 +1,48 @@
+Abstract class vs Interface
+
+Type of methods: Interface can have only abstract methods. Abstract class can have abstract and non-abstract methods. From Java 8, it can have default and static methods also.
+Final Variables: Variables declared in a Java interface are by default final. An abstract class may contain non-final variables.
+Type of variables: Abstract class can have final, non-final, static and non-static variables. Interface has only static and final variables.
+Implementation: Abstract class can provide the implementation of interface. Interface can’t provide the implementation of abstract class.
+Inheritance vs Abstraction: A Java interface can be implemented using keyword “implements” and abstract class can be extended using keyword “extends”.
+Multiple implementation: An interface can extend another Java interface only, an abstract class can extend another Java class and implement multiple Java interfaces.
+Accessibility of Data Members: Members of a Java interface are public by default. A Java abstract class can have class members like private, protected, etc.
+
+Encapsulation is defined as the wrapping up of data under a single unit.
+Data Hiding: the inner implementation of the class will not be visible to the user
+Increased Flexibility: We can make the variables of the class as read-only or write-only depending on our requirement.
+Reusability: Encapsulation also improves the re-usability and easy to change with new requirements.
+Testing code is easy: Encapsulated code is easy to test for unit testing.
+
+process vs threads
+Both processes and threads are independent sequences of execution.
+The typical difference is that threads (of the same process) run in a shared memory space, while processes run in separate memory spaces.
+
+https://www.zhihu.com/question/19856916
+horse compete
+
+62-1 = 63 => 2^6 - 1 = 63
+
+刚刚结束了苹果家的面试，是网上投的，主要是大数据但偏java方向的，加州组。是个video的电面。提前看面试官的背景好像是full stack java的。我也没看前端，因为真的不太会。烙印老板先花5分钟介绍了一下自己家里的项目，然后问了下我现在的项目情况。我就介绍了我现在做的大数据的情况。正常调出简历，按我的简历一项项问。
+然后问了些基本的spark问题，比如DAG， narrow/wide dependency, reduceByKey vs groupByKey, 为什么用impala, Spark你是怎么优化的？
+然后他说他有几个在Prod 的spark job总是偶尔会失败，你觉得是什么原因，怎么去debug？然后又问我会不会Spring Boot？
+其实我不太会这个，然后问了下什么是@Autowired....汗，没答上来。。看我以前做过RESTful，就问SOAP vs REST的区别，我没复习这段，也没用过SOAP, 我准备的都是大数据方面的东东，按经经验说了几条区别，然后他来了句：SOAP/REST哪个更安全？
+我想了想REST大家用的多，估计就是REST更安全吧。（汗，回答错了，其实是SOAP更安全，里面有built-in的WS-Security）。
+然后突然又问 Http 跟 https有啥区别（汗，我还真没注意~ 老老实实说不知道......）然后又问kafka是干嘛的？你们用kafka干嘛？
+最后又问了一个大点的问题，如果我现在有个设计，要百万级别的call到这个RESTful service，你会怎么设计 (他说这个跟大数据无关，就是问问你想怎么设计这个web,汗....)
+ 我硬着头皮想了想用多线程，还有cache response，然后连接方面用singleton设计。。。不知道有没有懂web 设计的有更好的思路.....
+ 然后还问有没有machine learning的经验, 啥是supervised/unsupervised learning。。最后就问了道算法题，找出一堆数字里面第一个不重复的那个~ 秒了。。
+
+ 1. Describe interrupts. When do you want to mask interrupts?
+ 2. What is a scheduling quantum? 如果自己来design 选择多大的quantum? (其实不需要说出来具体值 描述一下为什么太大太小都不行就ok了)
+ 3. 2 types of scheduling (preemptive vs. cooperative) 区别 这题略崩hhh忘了cooperative是yielding based了
+ 4. 如何guarantee critical tasks to run in kernel? How about lower priority ones?
+ 5. Priority inversion是什么 如何预防
+ 6. Multicore scheduling的方法 (我答了两种 不知道有没有其他), followup每个core有自己queue的好处是什么? Thread在不同core之间migration有什么坏处?
+ 7. 用固定数量的worker thread来满足user需求 vs. user spawn thread才开多个thread (这个我是胡说的 如果有大神指点一下这个应该是啥真是感恩不尽)
+ 8. Process vs. threads (classic OS question...)
+ 9. What are typical page sizes? (4K, 16K). 16K page相比之下的优劣点?
+ 10. Wired/pinned pages是什么? 有什么好处?
+ 一台现代机器有多少内存，能支持多少rps, web socket 和 file descriptor的关系，deploy一个build要用什么软件。
+
+ Polymorphism is the ability of an object to take on many forms. The most common use of polymorphism in OOP occurs when a parent class reference is used to refer to a child class object.

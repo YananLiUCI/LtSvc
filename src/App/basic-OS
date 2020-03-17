@@ -1,0 +1,23 @@
+process vs thread
+Both processes and threads are independent sequences of execution.
+The typical difference is that threads (of the same process) run in a shared memory space, while processes run in separate memory spaces.
+IPC method
+Pipes (Same Process) –
+This allows flow of data in one direction only. Analogous to simplex systems (Keyboard). Data from the output is usually buffered until input process receives it which must have a common origin.
+Names Pipes (Different Processes) –
+This is a pipe with a specific name it can be used in processes that don’t have a shared common process origin. E.g. is FIFO where the details written to a pipe is first named.
+Message Queuing –
+This allows messages to be passed between processes using either a single queue or several message queue. This is managed by system kernel these messages are coordinated using an API.
+Semaphores –
+This is used in solving problems associated with synchronization and to avoid race condition. These are integer values which are greater than or equal to 0.
+
+Shared memory –
+This allows the interchange of data through a defined area of memory. Semaphore values have to be obtained before data can get access to shared memory.
+Sockets –
+This method is mostly used to communicate over a network between a client and a server. It allows for a standard connection which is computer and OS independent.
+
+deadlock vs live lock
+a deadlock is a state in which each member of a group of actions, is waiting for some other member to release a lock
+
+A livelock is similar to a deadlock, except that the states of the processes involved in the livelock constantly change with regard to one another, none progressing.
+Livelock is a special case of resource starvation; the general definition only states that a specific process is not progressing.

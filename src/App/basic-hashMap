@@ -1,0 +1,2 @@
+HashMap is a Map based collection class that is used for storing Key & value pairs. HashMap is known as HashMap because it uses a technique called Hashing.
+Hashing is a technique of converting a large String to small String that represents the same String. A shorter value helps in indexing and faster searches.

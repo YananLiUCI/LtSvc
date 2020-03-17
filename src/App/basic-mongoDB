@@ -1,0 +1,4 @@
+Document Databases: In these databases, data is stored in documents (instead of rows and columns in a table) and these documents are grouped together in collections.
+Each document can have an entirely different structure. Document databases include the CouchDB and MongoDB.
+Storing large volumes of data that often have little to no structure. A NoSQL database sets no limits on the types of data we can store together and allows us to add new types as the need changes.
+With document-based databases, you can store data in one place without having to define what “types” of data those are in advance.

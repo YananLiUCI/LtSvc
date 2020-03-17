@@ -1,0 +1,34 @@
+Part of innovation I understand is making things easier for users to use. This improves the productivity of the team. Taking my ebay Experience as an example:
+
+EBAY provides services to different countries. To specify what language, option user will see in each country.
+We have a GEO config controls these behaviors. Because sometimes we need to expand service to different countries, GEO needs to be updated accordingly.
+
+Since GEO config is been used in thousands of applications.
+And every GEO update will require developer manually refresh the pool to get the latest version of geo config. This is time consuming and can delay software lock down.
+I developed the rest service to fetch geo config from dB. With this service, the upstream app can automatically fetch the latest version geo config.
+
+This saves developers’ thousands of hours every GEO config updates and avoided the approvals during software lockdown.
+Recently this has been launched in production and  used across the whole upstream teams.
+讲完后会问你如何scale这个system，如果保证production reliability. 如何设置monitoring，需要监控哪些metrics
+
+config cache at client side using daemon thread. using concurrent hashmap refresh every 60min.
+1,000 pools, 60,000 VMs,  Each machine call service once an hour, 1million calls per day.
+Response time 3~5ms. peak 10ms.
+
+Rest service scalable
+The server end of REST is stateless, which means that the server doesn't have to store anything across requests.
+This means that there doesn't have to be (much) communication between servers, making it horizontally scalable.
+Database side, used mongo DB which is can store large volume data. hashing based on the key
+
+reliability:
+repairable components : Mean Time Between Failures (MTBF) and Mean Time To Repair (MTTR)
+client side implemented retry for the service side error.
+For non-repairable components, it is expressed as Mean Time To Fail (MTTF). The invalid request is also cached to make the request fail fast.
+
+monitoring
+key metrics:
+log waring/error/failure/ rps/ available memory/ threads/GC collection.
+
+incident high traffic
+performance test, when design the system make sure it is scalable and have enough capacity could handle the peak traffic.
+use the metric logs to estimate and scaling the system.

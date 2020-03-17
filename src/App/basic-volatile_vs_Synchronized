@@ -1,0 +1,5 @@
+synchronized is method level/block level access restriction modifier. It will make sure that one thread owns the lock for critical section.
+Only the thread,which own a lock can enter synchronized block. If other threads are trying to access this critical section, they have to wait till current owner releases the lock.
+
+volatile is variable access modifier which forces all threads to get latest value of the variable from main memory.
+No locking is required to access volatile variables. All threads can access volatile variable value at same time.

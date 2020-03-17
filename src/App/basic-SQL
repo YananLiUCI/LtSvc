@@ -1,0 +1,34 @@
+Tip #1: Index All Columns Used in 'where', 'order by', and 'group by' Clauses
+Running the following SQL query from a database with 500 rows without an index
+The above query will force MySQL server to conduct a full table scan (start to finish) to retrieve the record that we are searching.
+Tip 2: Optimize Like Statements With Union Clause instead of use OR
+Tip 3: Avoid Like Expressions With Leading Wildcards
+Tip 6: Optimize Your Database Schema
+Normalize Tables/Avoid Null Values/Avoid Too Many Columns
+MySQL Query Caching
+
+SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1, column2, ... ASC|DESC;
+
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+
+BEGIN
+SET N=N-1;
+  RETURN (
+      # Write your MySQL query statement below.
+      SELECT DISTINCT Salary
+      FROM Employee
+      ORDER BY Salary DESC
+      LIMIT N, 1 // offset N, return  count 1
+  );
+END
+A transaction is a logical unit of processing in a DBMS
+Atomicity: A transaction is a single unit of operation. You either execute it entirely or do not execute it at all. There cannot be partial execution.
+Consistency: Once the transaction is executed, it should move from one consistent state to another.
+Isolation: Transaction should be executed in isolation from other transactions (no Locks). During concurrent transaction execution, intermediate transaction results from simultaneously executed transactions should not be made available to each other. (Level 0,1,2,3)
+Durability: · After successful completion of a transaction, the changes in the database should persist. Even in the case of system failures.

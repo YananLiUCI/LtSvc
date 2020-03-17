@@ -1,0 +1,40 @@
+
+• Built a recommendation system to recommend movies to users they may like most based on their past rating history
+• Used 1GB of Netflix reviews as the dataset and developed a Collaborative Filtering Algorithm (Item-Based) to build concurrent
+matrix.
+• Based on Collaborative Filtering Algorithm (Item-Based), get the rating matrix from 1GB Netflix reviews, calculate the movies
+concurrent matrix, and generate the recommendation lists through matrix multiplication.
+• Implemented 4 map reduce job to complete concurrent matrix building, matrix normalization, matrix multiplication,
+matrix summation process.
+
+Recommendation System.
+Systems that attempt to predict item that users may be interested in or help people find information that may interest them
+
+Algorithm
+
+1User Collaborative Filtering (User CF)
+
+
+A form of collaborative filtering based on the similarity between users
+
+calculated using people's ratings of those items
+
+2 Item Collaborative Filtering (Item CF)
+
+
+A form of collaborative filtering based on the similarity between items
+
+calculated using people's ratings of those items
+
+We will use Item CF
+
+●  The number of users weighs more than number of products
+
+●  Item will not change frequently, lowering calculation
+
+●  Using user’s historical data, more convincing
+
+How to do Item CF:
+Build co-occurrence matrix（If one user rated two movies, these two are related）
+●  Build rating matrix
+●  Matrix computation to get recommending result

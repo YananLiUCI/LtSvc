@@ -1,0 +1,9 @@
+In our software system, we use data collection module to collect performance data for millions device.
+To save cost,  we want to deliver multi threading data collection solution to replace the previous single threading solution.
+By using the new solution we can save ~ 50% controllers which is a huge saving for the company.
+To implement, we modified the architecture to support multi-threading method and vendor promise their firmware access is thread-safe .
+But in the middle of the project, we find some component in vendor software is not accessible by multi-threads.
+At that time the DDL is coming and we cannot wait for vendor's fix solution.
+I discussed with a team and proposed work around solution, synchronized all threads and only use single thread access to the problematic part.
+And after the vendor fix their component, we did a SW update resolved the problem.
+

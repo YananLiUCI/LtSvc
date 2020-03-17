@@ -1,0 +1,2 @@
+find file based on size(> 1kb):
+find . -type f -size +1kb

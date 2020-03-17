@@ -1,0 +1,51 @@
+DAG
+(Directed Acyclic Graph) DAG in Apache Spark is a set of Vertices and Edges, where vertices represent the RDDs and the edges represent the Operation to be applied on RDD.
+In Spark DAG, every edge directs from earlier to later in the sequence.
+
+MapReduce in three steps:
+
+The data is read from HDFS.
+Then apply Map and Reduce operations.
+The computed result is written back to HDFS.
+
+We optimize the DAG in Apache Spark by rearranging and combining operators wherever possible.
+For, example if we submit a spark job which has a map() operation followed by a filter operation.
+The DAG Optimizer will rearrange the order of these operators since filtering will reduce the number of records to undergo map operation.
+
+DAG advantages
+The lost RDD can recover using the Directed Acyclic Graph.
+Map Reduce has just two queries the map, and reduce but in DAG we have multiple levels. So to execute SQL query, DAG is more flexible.
+DAG helps to achieve fault tolerance. Thus we can recover the lost data.
+It can do a better global optimization than a system like Hadoop MapReduce.
+
+Transformations cause shuffles, and can have 2 kinds of dependencies:
+
+Narrow dependencies: Each partition of the parent RDD is used by at most one partition of the child RDD.
+[parent RDD partition] ---> [child RDD partition]
+Fast! No shuffle necessary. Optimizations like pipelining possible. Thus transformations which have narrow dependencies are fast.
+Wide dependencies: Each partition of the parent RDD may be used by multiple child partitions
+                       ---> [child RDD partition 1]
+[parent RDD partition] ---> [child RDD partition 2]
+                       ---> [child RDD partition 3]
+Slow! Shuffle necessary for all or some data over the network. Thus transformations which have narrow dependencies are slow.
+
+reduceByKey: Spark RDD reduceByKey function merges the values for each key using an associative reduce function. Basically reduceByKey function works only for RDDs which contains key and value pairs kind of elements(i.e RDDs having tuple or Map as a data element). It is a transformation operation which means it is lazily evaluated.
+
+groupByKey() is just to group your dataset based on a key. It will result in data shuffling when RDD is not already partitioned.
+
+What is Apache Spark? Fast and general engine for large-scale data processing.
+Spark is a fast and general processing engine compatible with Hadoop data.
+It can run in Hadoop clusters through YARN or Spark's standalone mode, and it can process data in HDFS, HBase, Cassandra, Hive, and any Hadoop InputFormat.
+It is designed to perform both batch processing (similar to MapReduce) and new workloads like streaming, interactive queries, and machine learning.
+
+What is Apache Impala? Real-time Query for Hadoop.
+Impala is a modern, open source, MPP SQL query engine for Apache Hadoop.
+Impala is shipped by Cloudera, MapR, and Amazon. With Impala, you can query data, whether stored in HDFS or Apache HBase – including SELECT, JOIN, and aggregate functions – in real time.
+
+broadcast join for spark
+import org.apache.spark.sql.functions.broadcast
+
+val smallDF: DataFrame = ???
+val largeDF: DataFrame = ???
+
+largeDF.join(broadcast(smallDF), Seq("foo"))

@@ -1,0 +1,17 @@
+Performance
+If the sequence is not cared parallel stream will be faster.
+if you have a small list; for loops perform better, if you have a huge list; a parallel stream will perform better.
+
+And since parallel streams have quite a bit of overhead, it is not advised to use these unless you are sure it is worth the overhead.
+Everything in software engineering is a trade-off. A relevant trade-off in this context is the following: "Performant code usually is not very readable, and readable code usually is not very performant."
+As the cost of maintenance is much higher these days than the cost of hardware, the trade-off usually leans towards readable/maintainable code now. So unless millisecond performance is mission critical (and you optimised your entire stack and software for this), it is not a strong argument in most cases.
+
+Readability
+streams/lambda is more readable.Streams are a more declarative style.
+
+how to change thread size
+(1)It also provides an overloaded ForkJoinPool(int parallelism) constructor that allows user to override the number of threads to be created.
+Usually you shouldn’t override the number of threads unless you have a strong reason to do it.
+
+(2)set java.util.concurrent.ForkJoinPool.common.parallelism system property which will affect every ForkJoinPool creation in your application.
+https://www.baeldung.com/java-fork-join

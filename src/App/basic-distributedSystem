@@ -1,0 +1,30 @@
+，问怎么shading，怎么处理single point of failure，怎么master election，怎么load balancing，之前也在网上看过类似博客，答得还不错。
+Sharding method
+a. Horizontal partitioning:
+This is also called a range based partitioning as we are storing different ranges of data in separate tables. Horizontal partitioning is also called as Data Sharding.
+b. Vertical Partitioning: In this scheme, we divide our data to store tables related to a specific feature in their own server.
+The main problem with this approach is that if our application experiences additional growth, then it may be necessary to further partition a feature specific DB across various servers.
+c. Directory Based Partitioning: A loosely coupled approach to work around issues mentioned in the above schemes is to create a lookup service which knows your current partitioning scheme and abstracts it away from the DB access code.
+ So, to find out where a particular data entity resides, we query the directory server that holds the mapping between each tuple key to its DB server.
+sharding criteria
+ a. Key or Hash-based partitioning: A workaround for this problem is to use Consistent Hashing.
+ Caused issue:
+ a. Joins and Denormalization:
+ once a database is partitioned and spread across multiple machines it is often not feasible to perform joins that span database partitions.
+ A common workaround for this problem is to denormalize the database so that queries that previously required joins can be performed from a single table.
+ Of course, the service now has to deal with all the perils of denormalization such as data inconsistency.
+
+ single point of failure
+ master-slave when master down slave becomes master.
+
+ master election
+ paxos algorithm to do leader election
+ 1. prepare
+ A Proposer creates a message with num n
+  2. promise majoriy acceptor accept n
+  3 proposer set n with v send request to accept
+  4 acceptor accept the proposal
+use random time out across the nodes to avoid infinite election.
+The 3PC protocol eliminates the 2PC protocol’s system blocking problem with the third phase preCommit.
+If the coordinator fails before sending a preCommit message, other processes will unanimously agree that the operation was aborted.
+The coordinator will not send out doCommit message until all processes have acknowledged.

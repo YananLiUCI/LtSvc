@@ -1,0 +1,3 @@
+TCP is a connection-oriented protocol, whereas UDP is a connectionless protocol.
+The speed for TCP is slower while the speed of UDP is faster. TCP uses handshake protocol like SYN, SYN-ACK, ACK while UDP uses no handshake protocols.
+The Domain Name System (DNS) DNS translates domain names to IP addresses so browsers can load Internet resources.

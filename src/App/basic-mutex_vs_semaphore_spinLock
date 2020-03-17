@@ -1,0 +1,9 @@
+he Mutex is a locking mechanism that makes sure only one thread can acquire the Mutex at a time and enter the critical section.
+This thread only releases the Mutex when it exits the critical section.
+Semaphore
+A semaphore is a signalling mechanism and a thread that is waiting on a semaphore can be signaled by another thread.
+This is different than a mutex as the mutex can be signaled only by the thread that called the wait function.
+SpinLock
+Say a resource is protected by a lock ,a thread that wants access to the resource needs to acquire the lock first.
+If the lock is not available, the thread might repeatedly check if the lock has been freed.
+During this time the thread busy waits, checking for the lock, using CPU, but not doing any useful work. Such a lock is termed as a spin lock.
